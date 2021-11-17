@@ -11,13 +11,32 @@ function App() {
   const [topAnime, setTopAnime] = useState([]);
   const [search, setSearch] = useState('');
 
+  const GetTopAnime = async() => {
+    const temp = await fetch('https://api.jikan.moe/v3/top/anime/1/bypopularity').then((res) => res.json());
+    setTopAnime(temp.top.slice(0, 5));
+  }
+
+  useEffect(() => {
+    GetTopAnime();
+  }, []);
+
+const searchHandle = event => {
+      event.preventDefault();
+
+      console.log(search);
+
+}
   return (
     <div className="App">
       <Header/>
       <div className="content-wrap">
         <SideBar
          topAnime = {topAnime}/>
-         <MainContent/>
+         <MainContent 
+         onChange = {searchHandle}
+         onSearch = {search}
+         onAnimeList = {animeLst}
+         onSetSearch = {setSearch}/>
 
       </div>
       

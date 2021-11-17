@@ -1,14 +1,17 @@
-import React from 'react';
 
-const MainContent = () => {
+const MainContent = (props) => {
     return (
         <main>
             <div className="main-head">
-                <form className="search-bar">
+                <form className="search-box"
+                onSubmit = {props.onChange}>
                     <input 
                     type="search"  
                     placeholder = "Search for an anime..." 
-                    required/>
+                    required
+                    value = {props.onSearch}
+                    onChange = {event => props.onSetSearch(event.target.value)}
+                    />
                 </form>
             </div>
         </main>
