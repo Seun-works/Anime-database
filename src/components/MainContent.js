@@ -1,3 +1,4 @@
+import AnimeCard from "./assets/AnimeCard"
 
 const MainContent = (props) => {
     
@@ -14,6 +15,13 @@ const MainContent = (props) => {
                     onChange = {event => props.onSetSearch(event.target.value)}
                     />
                 </form>
+            </div>
+            <div className="anime-list">
+                {props.onAnimeList.map((anime) => (
+                    <AnimeCard
+                    key = {anime.mal_id}
+                    anime = {anime}/>
+                 ) )}
             </div>
         </main>
     )

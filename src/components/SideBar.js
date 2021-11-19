@@ -9,13 +9,20 @@ const SideBar = (props) => {
         <nav>
           <h3>Top Anime</h3>
           {props.topAnime.map((anime) => (
-            <a
-            key = {anime.mal_id}
-            href={anime.url} 
-            target="_blank" 
-            rel="noopener noreferrer">
-              {anime.title}
-            </a>
+            <React.Fragment>
+              <span>
+                <img src={anime.image_url} alt="Anime" key={anime.mal_id} />
+              </span>
+
+              <a
+                href={anime.url}
+                key={anime.mal_id}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {anime.title}
+              </a>
+            </React.Fragment>
           ))}
         </nav>
       </aside>
