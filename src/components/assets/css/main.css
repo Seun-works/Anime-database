@@ -3,7 +3,7 @@
   padding: 0;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Courier New', Courier, monospace;
 }
 
 header {
@@ -15,7 +15,7 @@ header {
 }
 
 header h1 {
-  color: #AAA;
+  color: white;
   font-size: 36px;
   font-weight: 400;
   text-align: center;
@@ -48,9 +48,15 @@ header h1 strong {
 }
 
 .content-wrap aside nav h3 {
-  color: #313131;
+  color: black;
   font-size: 24px;
   margin-bottom: 16px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .content-wrap aside nav a {
@@ -69,7 +75,7 @@ header h1 strong {
 
 .content-wrap aside nav a:hover {
   background-color: #313131;
-  color: #AAA;
+  color: whitesmoke;
 }
 
 .content-wrap main {
@@ -109,7 +115,7 @@ header h1 strong {
   border: none;
   display: block;
   width: 100%;
-  max-width: 400px;
+  max-width: 200px;
   padding: 16px;
   border-radius: 999px;
   background-color: #AAA;
