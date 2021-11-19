@@ -9,6 +9,9 @@
 header {
   padding-top: 50px;
   padding-bottom: 50px;
+  background: -webkit-gradient(linear, left top, right top, from(#b92b27), to(#1565c0));
+  background: linear-gradient(to right, #b92b27, #1565c0);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 header h1 {
@@ -26,6 +29,9 @@ header h1 strong {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  background: -webkit-gradient(linear, left top, right top, from(#b92b27), to(#1565c0));
+  background: linear-gradient(to right, #b92b27, #1565c0);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 .content-wrap aside {

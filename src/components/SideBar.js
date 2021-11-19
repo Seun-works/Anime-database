@@ -1,3 +1,5 @@
+//This component displays the sidebar with the top 5 post popular animes
+
 import React from "react";
 
 const SideBar = (props) => {

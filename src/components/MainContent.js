@@ -1,5 +1,6 @@
 
 const MainContent = (props) => {
+    
     return (
         <main>
             <div className="main-head">
