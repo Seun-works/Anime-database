@@ -1,70 +1,107 @@
-# Getting Started with Create React App
+# The Anime Database
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
 
-In the project directory, you can run:
+## Table of contents
 
-### `npm start`
+- [Overview](#overview)
+  - [The challenge](#the-challenge)
+  - [Screenshot](#screenshot)
+  - [Links](#links)
+- [My process](#my-process)
+  - [Built with](#built-with)
+  - [What I learned](#what-i-learned)
+  - [Continued development](#continued-development)
+  - [Useful resources](#useful-resources)
+- [Author](#author)
+- [Acknowledgments](#acknowledgments)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Overview
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### The challenge
 
-### `npm test`
+Users should be able to:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- See results of their favorite anime shows by typing them in the search bar found on top of the page.
+- Be able to see the top 5 most popular animes of all time at the side of the web application.
 
-### `npm run build`
+### Screenshot
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![](./screenshot.jpg)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Add a screenshot of your solution. The easiest way to do this is to use Firefox to view your project, right-click the page and select "Take a Screenshot". You can choose either a full-height screenshot or a cropped one based on how long the page is. If it's very long, it might be best to crop it.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Alternatively, you can use a tool like [FireShot](https://getfireshot.com/) to take the screenshot. FireShot has a free option, so you don't need to purchase it. 
 
-### `npm run eject`
+Then crop/optimize/edit your image however you like, add it to your project, and update the file path in the image above.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+**Note: Delete this note and the paragraphs above when you add your screenshot. If you prefer not to add a screenshot, feel free to remove this entire section.**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Links
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- Live Site URL: [The Anime Database](https://kind-clarke-42ccaa.netlify.app)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## My process
 
-## Learn More
+My thinking process while building this app was to finally learn how to use an API and display information dynamically from the API. I also needed to get used to knowing how to break down my React app into smalller reusable  components, if the need arises for them to be used.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Built with
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- React Components.
+- React hooks.
+- [Jikan anime api](https://jikan.moe/)
+- [React](https://reactjs.org/) - JS library
 
-### Code Splitting
+### What I learned
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Learning how to use react was not as hard as i thought it would be. My major hurdle with this app was tryignto figure out how to manage the stateful components in this web application. I learned that in using a react app, it is always good practice to seperate where you dynamically display your component and where you manage its state or rather, how the component is re-rendered. I also learned how to make use of API's, to get data about whatever information i wanted to display dynamically on the application.
 
-### Analyzing the Bundle Size
+The code snippet below shows how i was able to manage the state of the components in the root app component through the use of the ureact hook, useState.
+I also made use of asynchronous arrow functions to fetch data from the jikan API and then display the parsed JSON data on the side bar component of the web application.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```js
+const [animeLst, setAnimeLst] = useState([]);
+  const [topAnime, setTopAnime] = useState([]);
+  const [search, setSearch] = useState('');
 
-### Making a Progressive Web App
+  const GetTopAnime = async() => {
+    const temp = await fetch('https://api.jikan.moe/v3/top/anime/1/bypopularity').then((res) => res.json());
+    setTopAnime(temp.top.slice(0, 5));
+  }
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+  useEffect(() => {
+    GetTopAnime();
+  }, []);
 
-### Advanced Configuration
+const searchHandle = event => {
+      event.preventDefault();
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+      FetchAnime(search);
 
-### Deployment
+}
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+const FetchAnime = async(query) => {
+  const temp = await fetch (`https://api.jikan.moe/v3/search/anime?q=${query}&order_by=title&sort=asc&limit=12`).then((res) => res.json());
+  setAnimeLst(temp.results);
+  console.log(temp.results);
+}
+```
 
-### `npm run build` fails to minify
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Continued development
+
+Later down the line, i plan on combning this project with bootstrap to provide a cleaner user interface. I also want to readjuust the anime card component that displays the anime search results, by adding a part of the component that displays the anime's synopsis along with its image. This would all be done in due time.
+
+
+
+
+## Author
+
+- Website - [Seun Ogundipe](https://www.your-site.com)
+
+
+
+## Acknowledgments
+
+I want to give thanks to Tyler Potts as i made use of his template as an inspiration in building this react application.
