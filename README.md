@@ -55,7 +55,7 @@ My thinking process while building this app was to finally learn how to use an A
 
 ### What I learned
 
-Learning how to use react was not as hard as i thought it would be. My major hurdle with this app was tryignto figure out how to manage the stateful components in this web application. I learned that in using a react app, it is always good practice to seperate where you dynamically display your component and where you manage its state or rather, how the component is re-rendered. I also learned how to make use of API's, to get data about whatever information i wanted to display dynamically on the application.
+Learning how to use react was not as hard as i thought it would be. My major hurdle with this app was trying to figure out how to manage the stateful components in this web application. I learned that in using a react app, it is always good practice to seperate where you dynamically display your component and where you manage its state or rather, how the component is re-rendered. I also learned how to make use of API's, to get data about whatever information i wanted to display dynamically on the application.
 
 The code snippet below shows how i was able to manage the state of the components in the root app component through the use of the ureact hook, useState.
 I also made use of asynchronous arrow functions to fetch data from the jikan API and then display the parsed JSON data on the side bar component of the web application.
