@@ -4,12 +4,14 @@ import React, {useEffect, useState} from 'react';
 
 import Header from './components/Header';
 import MainContent from './components/MainContent';
+import ReactSpinner from './components/UI/ReactSpinner';
 import SideBar from './components/SideBar';
 
 function App() {
   const [animeLst, setAnimeLst] = useState([]);
   const [topAnime, setTopAnime] = useState([]);
   const [search, setSearch] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
   const GetTopAnime = async() => {
     const temp = await fetch('https://api.jikan.moe/v3/top/anime/1/bypopularity').then((res) => res.json());
@@ -28,10 +30,24 @@ const searchHandle = event => {
 }
 
 const FetchAnime = async(query) => {
-  const temp = await fetch (`https://api.jikan.moe/v3/search/anime?q=${query}&order_by=title&sort=asc&limit=12`).then((res) => res.json());
-  setAnimeLst(temp.results);
-  console.log(temp.results);
+    setIsLoading(true);
+    const temp = await fetch (`https://api.jikan.moe/v3/search/anime?q=${query}&order_by=title&sort=asc&limit=12`);
+    const data = await temp.json();
+    setAnimeLst(data.results);
+    console.log(data.results);
+ 
+  setIsLoading(false);
 }
+
+let content;
+
+if(isLoading) {
+  content = <ReactSpinner/>
+}
+
+
+
+
   return (
     <div className="App">
       <Header/>
@@ -39,11 +55,11 @@ const FetchAnime = async(query) => {
         <SideBar
          topAnime = {topAnime}/>
          <MainContent 
-         onChange = {searchHandle}
-         onSearch = {search}
-         onAnimeList = {animeLst}
-         onSetSearch = {setSearch}/>
-
+            onChange = {searchHandle}
+            onSearch = {search}
+            onAnimeList = {animeLst}
+            onSetSearch = {setSearch}/>
+            <span>{content}</span>
       </div>
       
     </div>
