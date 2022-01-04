@@ -1,0 +1,67 @@
+.anime-form {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 0%;
+          flex: 1 1 0%;
+  padding: 0px 16px;
+  max-height: 50px;
+  max-width: 100%;
+}
+
+.anime-form .main-head {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.anime-form .main-head .search-box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 0%;
+          flex: 1 1 0%;
+}
+
+.anime-form .main-head .search-box input {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  background: none;
+  outline: none;
+  border: none;
+  display: block;
+  width: 100%;
+  max-width: 200px;
+  padding: 16px;
+  border-radius: 999px;
+  background-color: #AAA;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.anime-form .main-head .search-box input ::-webkit-input-placeholder {
+  color: #888;
+}
+
+.anime-form .main-head .search-box input :-ms-input-placeholder {
+  color: #888;
+}
+
+.anime-form .main-head .search-box input ::-ms-input-placeholder {
+  color: #888;
+}
+
+.anime-form .main-head .search-box input ::placeholder {
+  color: #888;
+}
+
+.anime-form .main-head .search-box input:focus:valid {
+  background-color: #313131;
+  color: #FFF;
+}

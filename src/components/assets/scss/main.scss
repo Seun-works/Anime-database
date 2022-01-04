@@ -92,6 +92,8 @@ header {
 			}
 		}
 	}
+	
+
 
 	main {
 		flex: 1 1 0%;
@@ -137,6 +139,8 @@ header {
 			}
 		}
 
+		
+
 		.anime-list {
 			display: flex;
 			flex-wrap: wrap;
@@ -170,7 +174,7 @@ header {
 				}
 
 				h3 {
-					color: #313131;
+					color: whitesmoke;
 				}
 
 				&:hover {

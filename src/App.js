@@ -2,15 +2,18 @@ import './components/assets/css/main.css';
 
 import React, {useEffect, useState} from 'react';
 
+import AnimeForm from './components/AnimeForm';
+import AnimeList from './components/AnimeList';
 import Header from './components/Header';
-import MainContent from './components/MainContent';
 import ReactSpinner from './components/UI/ReactSpinner';
 import SideBar from './components/SideBar';
 
+// import MainContent from './components/MainContent';
+ 
 function App() {
   const [animeLst, setAnimeLst] = useState([]);
   const [topAnime, setTopAnime] = useState([]);
-  const [search, setSearch] = useState('');
+  // const [search, setSearch] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
   const GetTopAnime = async() => {
@@ -22,12 +25,12 @@ function App() {
     GetTopAnime();
   }, []);
 
-const searchHandle = event => {
-      event.preventDefault();
+// const searchHandle = event => {
+//       event.preventDefault();
 
-      FetchAnime(search);
+//       FetchAnime(search);
 
-}
+// }
 
 const FetchAnime = async(query) => {
     setIsLoading(true);
@@ -39,11 +42,11 @@ const FetchAnime = async(query) => {
   setIsLoading(false);
 }
 
-let content;
+// let content;
 
-if(isLoading) {
-  content = <ReactSpinner/>
-}
+// if(isLoading) {
+//   content = <ReactSpinner/>
+// }
 
 
 
@@ -54,12 +57,20 @@ if(isLoading) {
       <div className="content-wrap">
         <SideBar
          topAnime = {topAnime}/>
-         <MainContent 
+         <main>
+         <AnimeForm
+          onSearch = {FetchAnime}/>
+          {isLoading && <ReactSpinner/>}
+          {!isLoading && <AnimeList
+          onAnimeList = {animeLst}/>}
+         </main>
+         
+         {/* <MainContent 
             onChange = {searchHandle}
             onSearch = {search}
             onAnimeList = {animeLst}
-            onSetSearch = {setSearch}/>
-            <span>{content}</span>
+            onSetSearch = {setSearch}/> */}
+            {/* <span>{content}</span> */}
       </div>
       
     </div>
